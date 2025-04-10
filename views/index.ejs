@@ -52,9 +52,12 @@
             </div>
             <div class="date-container">
                 <div class="custom-date">
+                    <div class="custom-input" id="custom-datetime-input">
+                        <span class="custom-input-text"></span>
+                    </div>
                     <input id="custom-datetime" type="text" placeholder="Выберите дату и время">
                     <div class="action-date">
-                        <div class="clear-date" disabled>
+                        <div class="clear-date">
                             <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -225,12 +228,26 @@
             allowInput: true,
             disableMobile: true,
 
-            // Функция которая при изменении значения инпута выводит дату и время в нужном формате
-            onValueUpdate: function(selectedDates, dateStr, instance) {
+            onValueUpdate: 
+            function(selectedDates, dateStr, instance) {
                 const input = instance.input;
-                const date = selectedDates[0].toLocaleDateString('ru-RU');
-                const time = selectedDates[0].toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit', second: '2-digit'})
-                input.value = date + " " + time;
+                if (selectedDates.length > 0) {
+                    const customInputBlock = document.querySelector("#custom-datetime-input");
+                    
+                    const firstDate = selectedDates[0].toLocaleDateString('ru-RU');
+                    const firstTime = selectedDates[0].toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit' });
+
+                    input.classList.add("hidden-input");
+                    customInputBlock.classList.add("show");
+                    customInputBlock.addEventListener("click", function() {
+                        dateperiodTimeInput.open();
+                    });
+
+                    const patternOne = firstDate + "<span class='custom-input-time'>" + firstTime + "</span>"
+                    const customInputText = customInputBlock.querySelector(".custom-input-text");
+
+                    customInputText.innerHTML = patternOne;
+                }
             },
 
             onClose: function(selectedDates) {
@@ -273,7 +290,7 @@
             
             // Функция которая отвечает за отображение в нужном формате
             // Как она работает - Так как в инпуте нельзя делать перенос строки, я сделал через дополнительный блок который находится поверх инпута.
-            // Здесь инпут служит чистым инициализатором Flatpickr, а все данные отображаются в дополнительном блоке.
+            // Здесь инпут служит чисто инициализатором Flatpickr, а все данные отображаются в дополнительном блоке.
             onValueUpdate: function(selectedDates, dateStr, instance) {
                 const input = instance.input;
                 if (selectedDates.length >= 2) {
@@ -293,10 +310,10 @@
                     });
 
                     // Подставляем данные
-                    const patternOne = "<span class='custom-input-suffix'>с </span>" + firstDate + " " + "<span class='custom-input-time'>" + firstTime + "</span>"
-                    const patternTwo = "<span class='custom-input-suffix'>по </span>" + secondDate + " " + "<span class='custom-input-time'>" + secondTime + "</span>";
+                    const patternOne = "<span class='custom-input-suffix'>с</span>" + firstDate + " " + "<span class='custom-input-time'>" + firstTime + "</span>"
+                    const patternTwo = "<span class='custom-input-suffix'>по</span>" + secondDate + " " + "<span class='custom-input-time'>" + secondTime + "</span>";
 
-                    const customInputText = document.getElementsByClassName("custom-input-text");
+                    const customInputText = customInputBlock.getElementsByClassName("custom-input-text");
 
                     // Записываем в поля
                     customInputText[0].innerHTML = patternOne;
@@ -337,16 +354,20 @@
         document.querySelectorAll(".clear-date").forEach(clear => {
             clear.addEventListener("click", function() {
 
-                // Так как я делал последний инпут через дополнительный блок, пришлось добавлять условия для очистки полей
-                // Получаем информацию о кнопке, на которую нажали, в данном случае кнопка очистки в последнем инпуте,
-                // ищем ближайший элемент с классом .custom-date, сразу после ищем внутри него инпут и сравниваем ID, чтобы эта часть функции работала только для последнего инпута
-                // Скрываем дополнительный блок, показываем инпут
+                // Получаем информацию о кнопке, на которую нажали, ищем ближайший элемент с классом .custom-date, 
+                // сразу после ищем внутри него инпут и сравниваем ID
                 if (clear.closest(".custom-date").querySelector("input").id === "custom-dateperiod-time") {
                     const input = clear.closest(".custom-date").querySelector("input");
                     input.value = "";
                     const customInputBlock = document.querySelector("#custom-dateperiod-time-input");
                     customInputBlock.classList.remove("show");
                     input.classList.remove("hidden-input");
+                } else if (clear.closest(".custom-date").querySelector("input").id === "custom-datetime") {
+                        const input = clear.closest(".custom-date").querySelector("input");
+                        input.value = "";
+                        const customInputBlock = document.querySelector("#custom-datetime-input");
+                        customInputBlock.classList.remove("show");
+                        input.classList.remove("hidden-input");
                 } else {
                     const input = this.closest(".custom-date").querySelector("input");
                     input.value = "";

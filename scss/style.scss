@@ -384,6 +384,7 @@ body {
     width: 200px;
     position: relative !important;
     height: max-content;
+    min-height: 14.72px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -462,12 +463,15 @@ fieldset {
     height: 100%;
 
     .custom-input-text {
-        font-size: 12px;
-        font-weight: 400;
+        font-family: Roboto;
         line-height: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        width: max-content;
+        max-width: 160px;
         display: flex;
-        align-items: center;
-        justify-content: start;
+        height: auto;
+        border: none;
         font-family: Roboto;
         color: $theme-input-color;
 
@@ -481,6 +485,7 @@ fieldset {
         font-weight: 400;
         line-height: 100%;
         margin-right: 6px;
+        box-sizing: border-box;
         display: flex;
         width: 14px;
         justify-content: end;
@@ -489,16 +494,29 @@ fieldset {
     }
 
     .custom-input-time {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 100%;
-        margin-left: 6px;
         font-family: Roboto;
+        line-height: 100%;
+        font-weight: 400;
+        font-size: 12px;
+        width: max-content;
+        display: flex;
+        height: auto;
+        border: none;
+        margin-left: 6px;
         color: $theme-suffix-color;
     }
 }
 
-#custom-dateperiod-time {
+#custom-datetime-input {
+    z-index: 2;
+    position: relative;
+
+    span {
+        margin-top: 0px;
+    }
+}
+
+#custom-dateperiod-time-input {
     z-index: 2;
     position: relative;
 }
