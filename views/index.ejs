@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+</head>
+<body>
+
+    <div class="main-block">
+        <h1>Тестовое задание</h1>
+        <div class="theme-toggle" id="theme-toggle">
+            <img class="toggle-icon" src="/images/light-theme-icon.svg" alt="Переключить тему">
+            <span class="toggle-text">Темная тема</span>
+        </div>
+        <div class="dates-block">
+            <div class="date-container">
+                <div class="custom-date">
+                    <input id="custom-date" type="text" placeholder="Выберите дату">
+                    <div class="action-date">
+                        <div class="clear-date">
+                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                    
+                        </div>
+                        <div class="input-icon">
+                            <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                        </div>
+                    </div>
+                </div>
+                <fieldset disabled>
+                    <div class="custom-date-disabled">
+                        <input id="custom-date-disabled" type="text" placeholder="Выберите дату" value="<%= firstDate %>">
+                        <div class="action-date">
+                            <div class="clear-date" disabled>
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </div>
+                            <div class="input-icon">
+                                <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="date-container">
+                <div class="custom-date">
+                    <input id="custom-datetime" type="text" placeholder="Выберите дату и время">
+                    <div class="action-date">
+                        <div class="clear-date" disabled>
+                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                    
+                        </div>
+                        <div class="input-icon">
+                            <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                        </div>
+                    </div>
+                </div>
+                <!-- Тут для примера вставил в поля данные с сервера -->
+                <fieldset disabled>
+                    <div class="custom-date-disabled">
+                        <input id="custom-datetime-disabled" type="text" placeholder="Выберите дату и время" value="<%= firstDate %> <%= firstTime %>">
+                        <div class="action-date">
+                            <div class="clear-date">
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </div>
+                            <div class="input-icon">
+                                <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="date-container">
+                <div class="custom-date">
+                    <input id="custom-dateperiod" type="text" placeholder="Выберите период"/>
+                    <div class="action-date">
+                        <div class="clear-date" disabled>
+                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                    
+                        </div>
+                        <div class="input-icon">
+                            <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                        </div>
+                    </div>
+                </div>
+                <fieldset disabled>
+                    <div class="custom-date-disabled">
+                        <input id="custom-dateperiod-disabled" type="text" placeholder="Выберите период" value="<%= firstDate %> - <%= secondDate %>">
+                        <div class="action-date">
+                            <div class="clear-date" disabled>
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </div>
+                            <div class="input-icon">
+                                <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="date-container">
+                <div class="custom-date">
+                    <div class="custom-input" id="custom-dateperiod-time-input">
+                        <span class="custom-input-text"></span>
+                        <span class="custom-input-text"></span>
+                    </div>
+                    <input id="custom-dateperiod-time" type="text" placeholder="Выберите период">
+                    <div class="action-date">
+                        <div class="clear-date">
+                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                    
+                        </div>
+                        <div class="input-icon">
+                            <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                        </div>
+                    </div>
+                </div>
+                <fieldset disabled>
+                    <div class="custom-date">
+                        <div class="custom-input show" id="custom-dateperiod-time-input">
+                            <span class="custom-input-text"><span class='custom-input-suffix'>с </span><%= firstDate %> <span class='custom-input-time'><%= firstTime %></span></span>
+                            <span class="custom-input-text"><span class='custom-input-suffix'>по </span><%= secondDate %> <span class='custom-input-time'><%= secondTime %></span></span>
+                        </div>
+                        <input type="text" class="hidden" placeholder="Выберите период">
+                        <div class="action-date">
+                            <div class="clear-date">
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.85717 2.47684L2.14288 8.19113" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.85717 8.19113L2.14288 2.47684" stroke="#6F7DAD" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                    
+                            </div>
+                            <div class="input-icon">
+                                <img src="/images/date-icon.svg" alt="Календарь" width="10">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Функция для переключения темы
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const toggleText = themeToggle.querySelector('.toggle-text');
+            const toggleIcon = themeToggle.querySelector('.toggle-icon');
+            
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                toggleText.textContent = 'Темная тема';
+                toggleIcon.src = '/images/light-theme-icon.svg';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-theme');
+                toggleText.textContent = 'Светлая тема';
+                toggleIcon.src = '/images/dark-theme-icon.svg';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Загрузка сохраненной темы при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('theme-toggle');
+            const toggleText = themeToggle.querySelector('.toggle-text');
+            const toggleIcon = themeToggle.querySelector('.toggle-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                toggleText.textContent = 'Светлая тема';
+                toggleIcon.src = '/images/dark-theme-icon.svg';
+            }
+            
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+
+        // Инициализация Flatpickr (Привязка календаря к #custom-date)
+        const dateInput = flatpickr("#custom-date", {
+
+            // Параметры
+            dateFormat: "d.m.Y",
+            enableTime: false,
+            locale: "ru",
+            allowInput: true,
+            disableMobile: true,
+
+            // Функция при закрытии календаря (Выдает ошибку если оставить поле пустым)
+            onClose: function(selectedDates) {
+                const parentContainer = this.input.closest(".custom-date");
+                if (selectedDates.length === 0) {
+                    parentContainer.classList.add("error");
+                } else {
+                    parentContainer.classList.remove("error");
+                }
+            }
+        });
+
+        // Инициализация Flatpickr (Привязка календаря к #custom-datetime)
+        const datetimeInput = flatpickr("#custom-datetime", {
+            dateFormat: "d.m.Y H:i:S",
+            enableTime: true,
+            locale: "ru",
+            allowInput: true,
+            disableMobile: true,
+
+            // Функция которая при изменении значения инпута выводит дату и время в нужном формате
+            onValueUpdate: function(selectedDates, dateStr, instance) {
+                const input = instance.input;
+                const date = selectedDates[0].toLocaleDateString('ru-RU');
+                const time = selectedDates[0].toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit', second: '2-digit'})
+                input.value = date + " " + time;
+            },
+
+            onClose: function(selectedDates) {
+                const parentContainer = this.input.closest(".custom-date");
+                if (selectedDates.length === 0) {
+                    parentContainer.classList.add("error");
+                } else {
+                    parentContainer.classList.remove("error");
+                }
+            },
+        });
+
+        // Инициализация Flatpickr (Привязка календаря к #custom-dateperiodInput)
+        const dateperiodInput = flatpickr("#custom-dateperiod", {
+            dateFormat: "d.m.Y",
+            enableTime: false,
+            mode: "range",
+            locale: "ru",
+            allowInput: true,
+            disableMobile: true,
+
+            onClose: function(selectedDates) {
+                const parentContainer = this.input.closest(".custom-date");
+                if (selectedDates.length === 0) {
+                    parentContainer.classList.add("error");
+                } else {
+                    parentContainer.classList.remove("error");
+                }
+            },
+        });
+
+        // Инициализация Flatpickr (Привязка календаря к #custom-dateperiod-time)
+        const dateperiodTimeInput = flatpickr("#custom-dateperiod-time", {
+            dateFormat: "d.m.Y H:i",
+            enableTime: true,
+            mode: "range",
+            locale: "ru",
+            allowInput: true,
+            disableMobile: true,
+            
+            // Функция которая отвечает за отображение в нужном формате
+            // Как она работает - Так как в инпуте нельзя делать перенос строки, я сделал через дополнительный блок который находится поверх инпута.
+            // Здесь инпут служит чистым инициализатором Flatpickr, а все данные отображаются в дополнительном блоке.
+            onValueUpdate: function(selectedDates, dateStr, instance) {
+                const input = instance.input;
+                if (selectedDates.length >= 2) {
+                    const customInputBlock = document.querySelector("#custom-dateperiod-time-input");
+                    
+                    // Получаем данные в текстовом формате
+                    const firstDate = selectedDates[0].toLocaleDateString('ru-RU');
+                    const firstTime = selectedDates[0].toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit' });
+                    const secondDate = selectedDates[1].toLocaleDateString('ru-RU');
+                    const secondTime = selectedDates[1].toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit' });
+
+                    // Скрываем инпут и показываем дополнительный блок
+                    input.classList.add("hidden-input");
+                    customInputBlock.classList.add("show");
+                    customInputBlock.addEventListener("click", function() {
+                        dateperiodTimeInput.open();
+                    });
+
+                    // Подставляем данные
+                    const patternOne = "<span class='custom-input-suffix'>с </span>" + firstDate + " " + "<span class='custom-input-time'>" + firstTime + "</span>"
+                    const patternTwo = "<span class='custom-input-suffix'>по </span>" + secondDate + " " + "<span class='custom-input-time'>" + secondTime + "</span>";
+
+                    const customInputText = document.getElementsByClassName("custom-input-text");
+
+                    // Записываем в поля
+                    customInputText[0].innerHTML = patternOne;
+                    customInputText[1].innerHTML = patternTwo;
+                }
+            },
+
+            onClose: function(selectedDates) {
+                const parentContainer = this.input.closest(".custom-date");
+                if (selectedDates.length === 0) {
+                    parentContainer.classList.add("error");
+                } else {
+                    parentContainer.classList.remove("error");
+                }
+            },
+        });
+
+        // Функция которая отвечает за открытие календаря при клике на иконку
+        document.querySelectorAll(".input-icon").forEach(icon => {
+            icon.addEventListener("click", function() {
+                const input = this.closest(".custom-date").querySelector("input");
+    
+                if (input.id === "custom-date") {
+                    dateInput.open();
+                } else if (input.id === "custom-datetime") {
+                    datetimeInput.open();
+                } else if (input.id === "custom-dateperiod") {
+                    dateperiodInput.open();
+                } else if (input.id === "custom-dateperiod-time") {
+                    dateperiodTimeInput.open();
+                }
+            });
+        });
+        
+        // Функция, которая отвечает за очистку полей
+        // Ищем все элементы с классом .clear-date, добавляем им обработчик событий через forEach
+        // Делаем функцию для обработчика, которая будет отвечать за очистку
+        document.querySelectorAll(".clear-date").forEach(clear => {
+            clear.addEventListener("click", function() {
+
+                // Так как я делал последний инпут через дополнительный блок, пришлось добавлять условия для очистки полей
+                // Получаем информацию о кнопке, на которую нажали, в данном случае кнопка очистки в последнем инпуте,
+                // ищем ближайший элемент с классом .custom-date, сразу после ищем внутри него инпут и сравниваем ID, чтобы эта часть функции работала только для последнего инпута
+                // Скрываем дополнительный блок, показываем инпут
+                if (clear.closest(".custom-date").querySelector("input").id === "custom-dateperiod-time") {
+                    const input = clear.closest(".custom-date").querySelector("input");
+                    input.value = "";
+                    const customInputBlock = document.querySelector("#custom-dateperiod-time-input");
+                    customInputBlock.classList.remove("show");
+                    input.classList.remove("hidden-input");
+                } else {
+                    const input = this.closest(".custom-date").querySelector("input");
+                    input.value = "";
+                }
+            });
+        });
+        
+        // function isValidDate(dateValue) {
+        //     // Разрешаем цифры, точки и пробелы
+        //     const pattern = /^[0-9\s\.]+$/;
+        //     return pattern.test(dateValue);
+        // }
+
+        // onValueUpdate: function(selectedDates, dateStr, instance) {
+        //         const input = instance.input;
+        //         const dateValue = input.value;
+                
+        //         if (!isValidDate(dateValue)) {
+        //             const parentContainer = this.input.closest(".custom-date");
+        //             parentContainer.classList.add("error");
+        //         } else {
+        //             parentContainer.classList.remove("error");
+        //         }
+        //     }
+        
+    </script>
+</body>
+</html>
